@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  body {
+    background-color: #1f2833;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  img{
+  height: 230px;
+  }
+  .card{
+  padding-top: 10px;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  }
+  .bi{
+  text-align: right;
+  padding-right: 10px;
+  font-size: 26px;
+  cursor: pointer;
+  }
+  h5{
+  padding-top: 15px;
+  }
+  .btn{
+  padding: 5px 25px;
+  margin-top: 10px;
+  }
+  @media(max-width: 768px){
+  img{
+  height: 100%;
+  }
+  }
+  @media(max-width: 575px){
+  .container{
+  width: 90%;
+  }
+  }
+  .text{
+    color:aliceblue;
+  }
+  .smtext{
+    color: black;
+    font-size:large;
+  }
+  .red{
+    color: rgb(183, 28, 28);
+  }
+  #high{
+    font-size: large;
+  }
+  .modal-header{
+    background:linear-gradient(#f90505, #fcf9f7);
+    color: white;
+  }
+</style>
+</head>
+<body >
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-primary fw-bold" href="#" id="logo">SIGN RECOGNITION</a>
+        
+      </div>
+    </nav>
+  </header>
+  <section>
+    <div class="col-md-12" id="main" >
+     
+    <div class="container"> 
+      <div class="row mt-5">
+        <div class="col-md-6 mt-5 ">  
+          <div class="text">
+            <h1 style="font-family:Century Gothic,light;font-size:4.75vw;font-style:bold;color:#66fcf1;text-align:center"><i>Sign Recognition</i></h1>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5" id="text">
+          
+          <div class="smtext">
+            <img src="https://media1.tenor.com/images/9ba410ce2196ab32b1982a3b65ab1221/tenor.gif?itemid=25540962" style="width:430px;height:148px;">
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+      <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card card text-white bg-dark">
+            <div class="card-body text-center">
+              <h4 class="card-title fw-bold">Text to Sign</h5>
+                <p>Input your desired text to get Sign Language Images.</p>
+                <a href="/Text_To_Sign" class="btn btn-outline-info">Text_To_Sign</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card text-white bg-dark">
+            <div class="card-body text-center">
+              <h4 class="card-title fw-bold">Sign to Text</h5>
+                <p>Sign Language is converted to Text</p>
+                <a href="/Sign_To_Text" class="btn btn-outline-info">Sign_To_Text</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card text-white bg-dark" >
+            <div class="card-body text-center">
+              <h4 class="card-title fw-bold">Data Set</h5>
+              <p>Dataset used in the project.</p>
+              <a href="/dataset" class="btn btn-outline-info">Dataset</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-white bg-dark" >
+            <div class="card-body text-center">
+              <h4 class="card-title fw-bold">About us</h5>
+                <p>Learn more about the project.</p>
+                <a href="/about" class="btn btn-outline-info">Read More</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+
+      </div>
+    </div>
+  </section>
+<br>
+<br>
+</body>
+</html>

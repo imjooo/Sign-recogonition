@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+  <link rel="shortcut icon" href="">
+  <title>jQuery Example</title>
+  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <script type="text/javascript">
+    var $SCRIPT_ROOT = '{{ request.script_root| tojson | safe }}';
+  </script>
+  <script type="text/javascript">
+    let data_ = null;
+    var intervalID = setInterval(update_values, 2150);
+    var abc = setInterval(print_ans, 2000);
+    
+    // Alert message if pressed stop button
+    function stopTextColor() {
+      clearInterval(intervalID);
+      alert("Do you really want to stop the prediction of Sign language?..")
+      window.location.reload();
+      ClearOutput();
+    }
+  </script>
+</body>
+
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Style the body */
+    body {
+      font-family: Arial;
+      color: white;
+      margin: 0;
+    }
+
+    /* Header/logo Title */
+    .header {
+      text-align: center;
+      color: white;
+    }
+
+    /* Column container */
+    .row {  
+      display: flex;
+      flex-wrap: wrap;
+      
+    }
+
+    /* Create two equal columns that sits next to each other */
+    /* Sidebar/left column */
+    .side {
+      flex: 50%;
+      background-color: #1f2833;
+      padding: 20px;
+      font-family:"Century Gothic";
+    }
+
+    /* Main column */
+    .main {
+      flex: 50%;
+      background-color:#1f2833;
+      padding: 20px;
+      font-family:"Helvetica";
+      font-size: 1.005vw;
+
+    }
+
+    /* Input Video */
+    .video {
+      background-color: #1f2833;
+      width: 82%;
+      height:65%;
+      padding:10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .flex-container > div {
+      background-color:#1f2833;
+      text-align: center;
+      color: white;
+      width: 630px;
+      height:630px;
+      margin: 70px;
+      line-height: 20px;
+      font-size: 15px;
+    }
+    
+      .button {
+        background-color: #45a29e;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 19px;
+        font-family:"Century Gothic";
+        margin: 4px 2px;
+        cursor: pointer;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+      .p {
+        font-family:"Helvetica";
+      }
+
+
+    /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 700px) {
+      .row{   
+        flex-direction: column;
+      }
+    }
+</style>
+</head>
+
+
+<body style="background-color:#0b0c10;">
+
+
+
+<!-- Header -->
+<div class="header">
+<h1 style="font-family:Century Gothic,light;font-size:45px;font-style:bold;color:#66fcf1;">MEDIAPIPE</h1>
+  
+</div>
+
+<!-- The flexible grid (content) -->
+<div class="row" >
+  <div class="side" ><br><br>
+  
+    <div class="video">
+      <img src="{{ url_for('video') }}" style="width:100%;height:100% ">
+    </div>
+
+   
+    
+  </div>
+  
+  <div class="main">
+    <h1 style="font-family:Century Gothic,light;font-size:30px;color:#66fcf1;">What is MediaPipe? </h1>
+    
+    <p>MediaPipe framework can be used for solving several problems like face-recognition, face-map, eye, hand, pose-estimator, hair, object-detection, boxtracking and KIFT.<br><br>
+      Palm detector is trained first, which estimates bounding boxes around rigid objects like palm and fists which is simpler than detecting hands with coupled fingers.<br><br>
+      It is independent of complex background and variable lighting conditions, which makes it a good fit to use.<br><br>
+      "Mediapipe Hands" uses an integrated ML pipe of several models working together:<br>
+        (1) A palm recognizer processes the captured hand image,<br> 
+        (2) A hand landmark model takes processed image as input and returns hand with 3D key points as output.<br>
+        (3) A gesture recognition model which processes the 3D hand key-points and classifies them into a discrete set of gestures.<br>
+      </p>
+    
+    
+    <img src="https://google.github.io/mediapipe/images/mobile/hand_landmarks.png" style="width:100%;height:35%;"><br><br>
+    <p>    Hand Landmark model implements ML model to take 21 3D key points of a hand from just a frame using regression which will directly produce the coordinate prediction.</p>
+  </div>
+</div>
+
+</body>
+</html>
+
+

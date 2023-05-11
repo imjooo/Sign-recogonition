@@ -1,0 +1,40 @@
+<html lang='en'>
+
+<head>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',
+                        filename='style.css')}}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<div style="background-color:#1f2833;" class="split left">
+  <div class="centered">
+    <form action="/process_query" method="post">
+      <h1 style="font-family:Century Gothic;color:#fafafa;" id="header">Enter your text below:</h1>
+      <input type="text" name="user_input"><br>
+    </form>
+  </div>
+</div>
+
+<div style="background-color:#45a29e;" class="split right">
+  <div class="filled">
+    {% if same|length == 0%}
+    <h1 style="font-family:Century Gothic;color:#fafafa;" >The translation will appear here!</h1>
+    {% else %}
+    <h1 id="list">'{{og}}' translates to:</h1>
+    {% for s in same %}
+    {% if "static/" in s%}
+    <img src={{s}} class="beside">
+    {% else %}
+    <p class="signlanguage beside"> {{ s }} </p>
+    <br>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <button type="button" class="btn btn-info"><a href="/">HOME</a></button>
+  </div>
+</div>
+</body>
+
+</html>

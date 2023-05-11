@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+
+
+<body>
+
+  <link rel="shortcut icon" href="">
+  <title>jQuery Example</title>
+  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+  <script type="text/javascript">
+    var $SCRIPT_ROOT = '{{ request.script_root| tojson | safe }}';
+  </script>
+  <script type="text/javascript">
+    let data_ = null;
+    var intervalID = setInterval(update_values, 1750);
+    var abc = setInterval(print_ans, 1500);
+    function update_values() {
+      $.getJSON('http://127.0.0.1:5000' + '/answer',
+        function (data) {
+          $('#result').text(data.result);
+          console.log(data);
+          data_ = data;
+        });
+    };
+    // Updates the answer 
+    function print_ans() {
+      document.getElementById("result").innerHTML = data_;
+    }
+    // Clears the output
+    function ClearOutput() {
+      $.getJSON('http://127.0.0.1:5000/clearoutput',
+        function (data2) {
+          $('#result').text(data2.result);
+          console.log(data2);
+          data__ = data2;
+        });
+    };
+     
+    // Alert message if pressed stop button
+    function stopTextColor() {
+      clearInterval(intervalID);
+      alert("Do you really want to stop the prediction of Sign language?")
+      window.location.reload();
+      ClearOutput();
+    }
+
+
+
+
+  </script>
+
+  <script>
+        // Clears the output
+        function ClearOutput1() 
+        {
+          clearInterval(intervalID);
+          alert("Do you really want to clear output?")
+          document.getElementById("result").innerHTML = '';
+        }
+        
+  </script>
+
+</body>
+
+
+<style>
+      
+   
+    body {
+        background-color: #1f2833;
+    }
+    h1 {
+        text-align: center;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Style the body */
+    body {
+      font-family: Arial;
+      color: white;
+      margin: 0;
+    }
+
+    /* Header/logo Title */
+    .header {
+      text-align: center;
+      color: white;
+    }
+
+    /* Column container */
+    .row {  
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height:85%;
+      
+    }
+
+    /* Create two equal columns that sits next to each other */
+    /* Sidebar/left column */
+    .side {
+      flex: 50%;
+      background-color: #1f2833;
+      padding: 20px;
+      font-family:"Century Gothic";
+    }
+
+    /* Main column */
+    .main {
+      flex: 50%;
+      background-color:#1f2833;
+      padding: 20px;
+      font-family:"Century Gothic";
+
+    }
+
+    /* Input Video */
+    .video {
+      background-color: #1f2833;
+      width: 82%;
+      height:85%;
+      padding:10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .button {
+        background-color: #5be2d8;
+        border: none;
+        color: #2e6d6a;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 19px;
+        font-family:"Century Gothic";
+        margin: 4px 2px;
+        cursor: pointer;
+        
+        width: 200px;
+        display: inline;
+    }
+
+    .wrapper {
+    text-align: center;
+      }
+
+    .button:hover 
+    {
+      background-color: #2e6d6a;
+      color: white;
+    }
+   
+    /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 700px)
+     {
+      .row{   
+        flex-direction: column;
+          }
+     }
+    
+
+
+</style>
+
+<body style="background-color:#0b0c10;">
+
+   
+<!-- Header -->
+<div class="header">
+  <h1 style="font-family:Century Gothic,light;font-size:45px;font-style:bold;color:#66fcf1;">SIGN LANGUAGE RECOGNITION</h1>
+    
+</div>
+
+<!-- The flexible grid (content) -->
+<div class="row" >
+  <div class="side" ><br><br>
+  
+    <div class="video">
+      <img src="{{ url_for('video') }}" style="width:100%;height:100% ">
+    </div>
+
+  </div>
+  
+  <div class="main">
+    <div>
+      <br>
+      <br>
+      <br>
+      <h1 style="font-family:Century Gothic,light;font-size:30px;color:#66fcf1;">OUTPUT: </h1>
+      <br>
+      <br>
+      <br>
+          <p>
+              <span id="result"></span>
+              <script>
+                  document.getElementById("result").innerHTML = data_;
+              </script>
+          </p>
+      <br><br><br><br><br><br>
+      <div class="wrapper">
+        
+          <button class="button" onclick="stopTextColor();">Stop</button>
+          <button class="button" onclick="ClearOutput();">Clear</button>
+      </div>
+  </div>
+    
+    
+  </div>
+</div>
+
+  <h1 style="font-family:Century Gothic,light;font-size:24px;color:#66fcf1;">Note:</h1>
+  <h1 style="font-family:Century Gothic,light;font-size:20px;color:#66fcf1;">1. Please try to put your hand properly inside the camera to get correct output. </h1>
+  <h1 style="font-family:Century Gothic,light;font-size:20px;color:#66fcf1;">2. Here, Output updates after every 3-4 seconds so change sign accordingly.</h1>
+  <h1 style="font-family:Century Gothic,light;font-size:20px;color:#66fcf1;">3. Space is added automatically if you remove the hand for about 3-4 seconds.</h1>
+
+</body>
+</html>
+
